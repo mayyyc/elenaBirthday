@@ -1,0 +1,5 @@
+type Reason @model {
+  id: ID!
+  reason: String!
+  name: String
+}
