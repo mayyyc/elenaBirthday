@@ -42,7 +42,9 @@ class Reasons extends Component {
         <div>{this.props.reasons.length}</div>
         <div>
           {this.props.reasons.map((reason, index) => {
-            return <div key={index}>{`${reason.reason} by ${reason.name}`}</div>;
+            return (
+              <div key={index}>{`${reason.reason} by ${reason.name} at ${reason.timestamp}`}</div>
+            );
           })}
         </div>
       </div>
@@ -56,7 +58,9 @@ class Why extends Component {
     name: ""
   };
   handleSubmit = async event => {
-    await API.graphql(graphqlOperation(mutations.createReason, { input: this.state }));
+    await API.graphql(
+      graphqlOperation(mutations.createReason, { input: { ...this.state, timestamp: Date.now() } })
+    );
     this.setState({
       reason: "",
       name: ""

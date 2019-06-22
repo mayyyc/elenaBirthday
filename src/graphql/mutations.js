@@ -6,6 +6,7 @@ export const createReason = `mutation CreateReason($input: CreateReasonInput!) {
     id
     reason
     name
+    timestamp
   }
 }
 `;
@@ -14,6 +15,7 @@ export const updateReason = `mutation UpdateReason($input: UpdateReasonInput!) {
     id
     reason
     name
+    timestamp
   }
 }
 `;
@@ -22,6 +24,7 @@ export const deleteReason = `mutation DeleteReason($input: DeleteReasonInput!) {
     id
     reason
     name
+    timestamp
   }
 }
 `;

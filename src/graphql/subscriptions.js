@@ -6,6 +6,7 @@ export const onCreateReason = `subscription OnCreateReason {
     id
     reason
     name
+    timestamp
   }
 }
 `;
@@ -14,6 +15,7 @@ export const onUpdateReason = `subscription OnUpdateReason {
     id
     reason
     name
+    timestamp
   }
 }
 `;
@@ -22,6 +24,7 @@ export const onDeleteReason = `subscription OnDeleteReason {
     id
     reason
     name
+    timestamp
   }
 }
 `;

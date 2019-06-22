@@ -6,6 +6,7 @@ export const getReason = `query GetReason($id: ID!) {
     id
     reason
     name
+    timestamp
   }
 }
 `;
@@ -19,6 +20,7 @@ export const listReasons = `query ListReasons(
       id
       reason
       name
+      timestamp
     }
     nextToken
   }
