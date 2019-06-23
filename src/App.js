@@ -6,7 +6,13 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
 import Why from "./Why";
 import Reasons from "./Reasons";
+import styled from "styled-components";
+
 Amplify.configure(aws_exports);
+
+const StyledApp = styled.div`
+  text-align: center;
+`;
 
 export default class App extends Component {
   constructor(props) {
@@ -23,14 +29,14 @@ export default class App extends Component {
         reasons: reasons.data.listReasons.items
       });
     } catch (err) {
-      console.log("error fetching candidates...", err);
+      console.log("error fetching data...", err);
     }
   }
 
   render() {
     const { reasons } = this.state;
     return (
-      <div className="App">
+      <StyledApp>
         <Router>
           <Route
             exact
@@ -40,7 +46,7 @@ export default class App extends Component {
           <Route path="/why" component={Why} />
           <Route path="/reasons" render={props => <Reasons {...props} reasons={reasons} />} />
         </Router>
-      </div>
+      </StyledApp>
     );
   }
 }
