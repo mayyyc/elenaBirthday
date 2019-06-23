@@ -12,6 +12,11 @@ Amplify.configure(aws_exports);
 
 const StyledApp = styled.div`
   text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default class App extends Component {

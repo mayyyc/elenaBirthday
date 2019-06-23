@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import * as mutations from "./graphql/mutations";
 import { Link } from "react-router-dom";
+import { Header, StyledLink } from "./styles";
+
 export default class Why extends Component {
   state = {
     reason: "",
@@ -40,34 +42,29 @@ export default class Why extends Component {
 
   renderReason = () => {
     return (
-      <div>
-        <label>
-          Why
-          <input
-            type="text"
-            value={this.state.reason}
-            onChange={e => this.setState({ reason: e.target.value })}
-          />
-        </label>
+      <React.Fragment>
+        <Header>Let her know why?</Header>
+        <textarea
+          value={this.state.reason}
+          onChange={e => this.setState({ reason: e.target.value })}
+        />
         <div>{this.state.reasonError}</div>
         <button onClick={this.handleCompleteReason}>Next</button>
-      </div>
+      </React.Fragment>
     );
   };
   renderName = () => {
     return (
-      <div>
-        <label>
-          Name
-          <input
-            type="text"
-            value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
-          />
-        </label>
+      <React.Fragment>
+        <Header>Name</Header>
+        <input
+          type="text"
+          value={this.state.name}
+          onChange={e => this.setState({ name: e.target.value })}
+        />
         <button onClick={() => this.setState({ isReasonCompleted: false })}>Back</button>
         <button onClick={() => this.handleSubmit(this.props)}>Done</button>
-      </div>
+      </React.Fragment>
     );
   };
   renderSuccess = () => {

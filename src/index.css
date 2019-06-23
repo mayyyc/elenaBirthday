@@ -1,8 +1,9 @@
 body,
 html,
 #root {
-  background-color: #202529;
+  background-color: #0d0d0d;
   color: #f3f5f8;
   font-family: "Ubuntu", sans-serif;
   height: 100%;
+  margin: 0;
 }
