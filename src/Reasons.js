@@ -1,17 +1,31 @@
-import React from "react";
-export default class Reasons extends React.Component {
+import React, { Fragment, Component } from "react";
+import { Header, colors } from "./styles";
+import styled from "styled-components";
+
+import Reason from "./Reason";
+const Page = styled.div`
+  color: ${colors.gray};
+  font-size: 80%;
+`;
+
+export default class Reasons extends Component {
+  state = {
+    currentIndex: 0
+  };
   render() {
+    const { currentIndex } = this.state;
+    const { reasons } = this.props;
+    const reasonCount = reasons.length;
+    const currentReason = reasons[currentIndex];
     return (
-      <div>
-        <div>{this.props.reasons.length}</div>
-        <div>
-          {this.props.reasons.map((reason, index) => {
-            return (
-              <div key={index}>{`${reason.reason} by ${reason.name} at ${reason.timestamp}`}</div>
-            );
-          })}
-        </div>
-      </div>
+      <Fragment>
+        <Header>
+          {reasonCount} Reasons <br />
+          Why Elena Is Amazing
+        </Header>
+        {currentReason && <Reason reason={currentReason} />}
+        <Page>{`${currentIndex + 1} / ${reasonCount}`}</Page>
+      </Fragment>
     );
   }
 }

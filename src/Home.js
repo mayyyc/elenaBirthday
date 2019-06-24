@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Header, StyledLink } from "./styles";
+import { Header, StyledButtonLink, StyledLink } from "./styles";
 
 const LinkBottom = styled(StyledLink)`
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
 `;
 
 export default class Home extends React.Component {
@@ -12,12 +12,8 @@ export default class Home extends React.Component {
     return (
       <React.Fragment>
         <Header>Is Elena amazing? </Header>
-        <StyledLink primary to="/why">
-          Yes, Elena is amazing
-        </StyledLink>
-        <StyledLink primary to="/why">
-          No, Elena is more than amazing
-        </StyledLink>
+        <StyledButtonLink to="/why">Yes, Elena is amazing.</StyledButtonLink>
+        <StyledButtonLink to="/why">No, Elena is more than amazing.</StyledButtonLink>
         <LinkBottom to="/reasons">{this.props.reasonCount} reasons why Elena is amazing</LinkBottom>
       </React.Fragment>
     );

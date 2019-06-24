@@ -1,9 +1,35 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import * as mutations from "./graphql/mutations";
-import { Link } from "react-router-dom";
-import { Header, StyledLink } from "./styles";
+import {
+  Header,
+  StyledButton,
+  StyledButtonLink,
+  StyledLink,
+  StyledLinkDiv,
+  InputStyles
+} from "./styles";
+import styled from "styled-components";
 
+const StyledError = styled.div`
+  margin-bottom: 10px;
+`;
+const StyledTextArea = styled.textarea`
+  ${InputStyles}
+  width: 200px;
+  height: 150px;
+  margin-bottom: 10px;
+`;
+const StyledInput = styled.input`
+  width: 200px;
+  margin-bottom: 10px;
+  ${InputStyles}
+  margin-bottom: 10px;
+`;
+
+const Text = styled.div`
+  margin-bottom: 20px;
+`;
 export default class Why extends Component {
   state = {
     reason: "",
@@ -35,54 +61,59 @@ export default class Why extends Component {
       });
     } else {
       this.setState({
-        reasonError: "Please. She would like to know why..."
+        reasonError: "Please..."
       });
     }
   };
 
   renderReason = () => {
     return (
-      <React.Fragment>
-        <Header>Let her know why?</Header>
-        <textarea
+      <Fragment>
+        <Header>Why?</Header>
+        <StyledError>{this.state.reasonError}</StyledError>
+        <StyledTextArea
+          autoFocus
           value={this.state.reason}
           onChange={e => this.setState({ reason: e.target.value })}
         />
-        <div>{this.state.reasonError}</div>
-        <button onClick={this.handleCompleteReason}>Next</button>
-      </React.Fragment>
+        <StyledButton onClick={this.handleCompleteReason}>Continue</StyledButton>
+        <StyledLink to="/">I'll do it later</StyledLink>
+      </Fragment>
     );
   };
   renderName = () => {
     return (
-      <React.Fragment>
-        <Header>Name</Header>
-        <input
+      <Fragment>
+        <Header>Who is this?</Header>
+        <StyledInput
+          autoFocus
           type="text"
           value={this.state.name}
           onChange={e => this.setState({ name: e.target.value })}
         />
-        <button onClick={() => this.setState({ isReasonCompleted: false })}>Back</button>
-        <button onClick={() => this.handleSubmit(this.props)}>Done</button>
-      </React.Fragment>
+        <StyledButton onClick={() => this.handleSubmit(this.props)}>Done</StyledButton>
+        <StyledLinkDiv onClick={() => this.setState({ isReasonCompleted: false })}>
+          Back
+        </StyledLinkDiv>
+      </Fragment>
     );
   };
   renderSuccess = () => {
     return (
-      <div>
-        <div>Thank you!</div>
-        <div>You're Amazing too.</div>
-        <Link to="/">Yeah, I know.</Link>
-      </div>
+      <Fragment>
+        <Header>Thank you!</Header>
+        <Text>You're Amazing too.</Text>
+        <StyledButtonLink to="/">Yeah, I know.</StyledButtonLink>
+      </Fragment>
     );
   };
   renderError = () => {
     return (
-      <div>
-        <div>Oops, something went wrong.</div>
-        <div>Please try again.</div>
-        <Link to="/">I will, because I'm amazing</Link>
-      </div>
+      <Fragment>
+        <Header>Oops, something went wrong.</Header>
+        <Text>Please try again.</Text>
+        <StyledButtonLink to="/">I will, because I'm amazing.</StyledButtonLink>
+      </Fragment>
     );
   };
   render() {

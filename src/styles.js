@@ -1,30 +1,59 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 export const colors = {
   dark: "#202529",
   gray: "#77828c",
   light: "#F3F5F8",
-  yellow: "#F2DD72"
+  yellow: "#F2DD72",
+  pink: "#FF665A"
 };
 
 export const Header = styled.div`
   font-size: 150%;
   margin-bottom: 20px;
 `;
-
-export const StyledLink = styled(Link)`
-  color: ${props => (props.primary ? colors.yellow : colors.gray)};
+const ButtonStyles = css`
+  color: ${colors.yellow};
   display: block;
-  text-decoration: ${props => (props.primary ? "none" : "underline")};
-  border: ${props => (props.primary ? `1px solid ${colors.yellow}` : "none")};
+  border: 1px solid ${colors.yellow};
   border-radius: 4px;
   padding: 8px 16px;
   margin-bottom: 10px;
   transition: all 0.4s;
   &:hover,
   &:focus {
-    color: ${props => (props.primary ? colors.dark : colors.light)};
-    background-color: ${props => (props.primary ? colors.yellow : "none")};
+    color: ${colors.dark};
+    background-color: ${colors.yellow};
   }
+`;
+export const StyledButton = styled.div`
+  ${ButtonStyles}
+`;
+export const StyledButtonLink = styled(Link)`
+  ${ButtonStyles}
+`;
+const LinkStyles = css`
+  color: ${colors.gray};
+  display: block;
+  text-decoration: underline;
+  transition: all 0.4s;
+  &:hover,
+  &:focus {
+    color: ${colors.light};
+  }
+`;
+export const StyledLink = styled(Link)`
+  ${LinkStyles}
+`;
+export const StyledLinkDiv = styled.div`
+  ${LinkStyles}
+`;
+export const InputStyles = css`
+  outline: none;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid ${colors.yellow};
+  color: ${colors.yellow};
+  padding: 5px;
 `;
