@@ -6,18 +6,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
 import Why from "./Why";
 import Reasons from "./Reasons";
-import styled from "styled-components";
 
 Amplify.configure(aws_exports);
-
-const StyledApp = styled.div`
-  text-align: center;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default class App extends Component {
   constructor(props) {
@@ -29,7 +19,7 @@ export default class App extends Component {
 
   async componentDidMount() {
     try {
-      const reasons = await API.graphql(graphqlOperation(queries.listReasons));
+      const reasons = await API.graphql(graphqlOperation(queries.listReasons, { limit: 100000 }));
       this.setState({
         reasons: reasons.data.listReasons.items
       });
@@ -41,17 +31,11 @@ export default class App extends Component {
   render() {
     const { reasons } = this.state;
     return (
-      <StyledApp>
-        <Router>
-          <Route
-            exact
-            path="/"
-            render={props => <Home {...props} reasonCount={reasons.length} />}
-          />
-          <Route path="/why" component={Why} />
-          <Route path="/reasons" render={props => <Reasons {...props} reasons={reasons} />} />
-        </Router>
-      </StyledApp>
+      <Router>
+        <Route exact path="/" render={props => <Home {...props} reasonCount={reasons.length} />} />
+        <Route path="/why" component={Why} />
+        <Route path="/reasons" render={props => <Reasons {...props} reasons={reasons} />} />
+      </Router>
     );
   }
 }
