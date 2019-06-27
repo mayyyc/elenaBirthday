@@ -14,7 +14,9 @@ const Page = styled.div`
   }
   width: 100%;
 `;
-
+const PageAction = styled.span`
+  cursor: pointer;
+`;
 export default class Reasons extends Component {
   state = {
     currentIndex: 0
@@ -44,9 +46,9 @@ export default class Reasons extends Component {
         </Header>
         <Content>{currentReason && <Reason reason={currentReason} />}</Content>
         <Page>
-          <span onClick={this.goToPrev}>{`<`}</span>
+          <PageAction onClick={this.goToPrev}>{`<`}</PageAction>
           {` ${currentIndex + 1} / ${reasonCount} `}
-          <span onClick={this.goToNext}>{`>`}</span>
+          <PageAction onClick={this.goToNext}>{`>`}</PageAction>
         </Page>
         <Footer>
           <StyledLink to="/">I'd like to tell Elena she's amazing too</StyledLink>

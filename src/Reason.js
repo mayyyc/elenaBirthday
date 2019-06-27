@@ -24,7 +24,7 @@ export default class Reason extends Component {
         <Message>
           {reason}
           <From>
-            {name}
+            {name || "Anonymous"}
             <br />
             {moment(Number(timestamp)).format("ll")}
           </From>
