@@ -1,14 +1,14 @@
 {
-    "dev": {
+    "prod": {
         "awscloudformation": {
-            "AuthRoleName": "elena-dev-20190620004110-authRole",
-            "UnauthRoleArn": "arn:aws:iam::061428388682:role/elena-dev-20190620004110-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::061428388682:role/elena-dev-20190620004110-authRole",
+            "AuthRoleName": "elena-prod-20190702194423-authRole",
+            "UnauthRoleArn": "arn:aws:iam::061428388682:role/elena-prod-20190702194423-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::061428388682:role/elena-prod-20190702194423-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "elena-dev-20190620004110-deployment",
-            "UnauthRoleName": "elena-dev-20190620004110-unauthRole",
-            "StackName": "elena-dev-20190620004110",
-            "StackId": "arn:aws:cloudformation:us-east-1:061428388682:stack/elena-dev-20190620004110/48e1a1c0-92a0-11e9-9588-0e27f3a268d6"
+            "DeploymentBucketName": "elena-prod-20190702194423-deployment",
+            "UnauthRoleName": "elena-prod-20190702194423-unauthRole",
+            "StackName": "elena-prod-20190702194423",
+            "StackId": "arn:aws:cloudformation:us-east-1:061428388682:stack/elena-prod-20190702194423/fa752fd0-9cad-11e9-a75d-0eb8ff60a84c"
         }
     }
 }
