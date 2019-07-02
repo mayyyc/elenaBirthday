@@ -67,16 +67,19 @@ export default class Why extends Component {
   renderReason = () => {
     return (
       <Fragment>
-        <Header>Why?</Header>
+        <Header className="header">Why?</Header>
         <Content>
           <StyledError>{this.state.reasonError}</StyledError>
           <StyledTextArea
             value={this.state.reason}
             onChange={e => this.setState({ reason: e.target.value })}
+            className="content-item"
           />
-          <StyledButton onClick={this.handleCompleteReason}>Continue</StyledButton>
+          <StyledButton onClick={this.handleCompleteReason} className="content-item">
+            Continue
+          </StyledButton>
         </Content>
-        <Footer>
+        <Footer className="content-item">
           <StyledLink to="/">I'll do it later</StyledLink>
         </Footer>
       </Fragment>
@@ -85,16 +88,19 @@ export default class Why extends Component {
   renderName = () => {
     return (
       <Fragment>
-        <Header>Who is this?</Header>
+        <Header className="header">Who is this?</Header>
         <Content>
           <StyledInput
+            className="content-item"
             type="text"
             value={this.state.name}
             onChange={e => this.setState({ name: e.target.value })}
           />
-          <StyledButton onClick={() => this.handleSubmit(this.props)}>Done</StyledButton>
+          <StyledButton onClick={() => this.handleSubmit(this.props)} className="content-item">
+            Done
+          </StyledButton>
         </Content>
-        <Footer>
+        <Footer className="content-item">
           <StyledLinkDiv onClick={() => this.setState({ isReasonCompleted: false })}>
             Back
           </StyledLinkDiv>
@@ -105,7 +111,7 @@ export default class Why extends Component {
   renderSuccess = () => {
     return (
       <Fragment>
-        <Header>
+        <Header className="header">
           Thank you!
           <br />
           You're Amazing too.
@@ -119,7 +125,7 @@ export default class Why extends Component {
   renderError = () => {
     return (
       <Fragment>
-        <Header>
+        <Header className="header">
           Oops, something went wrong. <br />
           Please try again.
         </Header>

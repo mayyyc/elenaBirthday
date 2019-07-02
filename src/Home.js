@@ -6,12 +6,16 @@ export default class Home extends React.Component {
   render() {
     return (
       <Container>
-        <Header>Is Elena amazing? </Header>
-        <Content>
-          <StyledButtonLink to="/why">Yes, Elena is amazing.</StyledButtonLink>
-          <StyledButtonLink to="/why">No, Elena is more than amazing.</StyledButtonLink>
+        <Header className="header">Is Elena amazing? </Header>
+        <Content className="content">
+          <StyledButtonLink className="content-item" to="/why">
+            Yes, Elena is amazing.
+          </StyledButtonLink>
+          <StyledButtonLink className="content-item" to="/why">
+            No, Elena is more than amazing.
+          </StyledButtonLink>
         </Content>
-        <Footer>
+        <Footer className="content-item">
           <StyledLink to="/reasons">
             <CountUp end={this.props.reasonCount} /> reasons why Elena is amazing
           </StyledLink>

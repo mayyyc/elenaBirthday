@@ -52,13 +52,15 @@ export default class Reasons extends Component {
             if (completed)
               return (
                 <Fragment>
-                  <Header>
+                  <Header className="header">
                     <CountUp end={reasonCount} duration={2} />
                     {` `}Reasons <br />
                     Why Elena Is Amazing
                   </Header>
-                  <Content>{currentReason && <Reason reason={currentReason} />}</Content>
-                  <Page>
+                  <Content className="content-item">
+                    {currentReason && <Reason reason={currentReason} />}
+                  </Content>
+                  <Page className="content-item">
                     <PageAction onClick={this.goToPrev}>{`<`}</PageAction>
                     {` ${currentIndex + 1} / ${reasonCount} `}
                     <PageAction onClick={this.goToNext}>{`>`}</PageAction>
@@ -67,8 +69,8 @@ export default class Reasons extends Component {
               );
             return (
               <Fragment>
-                <Header>Coming Soon</Header>
-                <Content>
+                <Header className="header">Coming Soon</Header>
+                <Content className="content-item">
                   <BoldText>
                     {days} d {hours} h {minutes} m {seconds} s
                   </BoldText>
@@ -77,7 +79,7 @@ export default class Reasons extends Component {
             );
           }}
         />
-        <Footer>
+        <Footer className="content-item">
           <StyledLink to="/">I'd like to tell Elena she's amazing too</StyledLink>
         </Footer>
       </Container>
