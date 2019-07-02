@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Container, Header, Content, Footer, colors, StyledLink } from "./styles";
 import styled from "styled-components";
 import CountUp from "react-countup";
+import Countdown from "react-countdown-now";
 import Reason from "./Reason";
+
 const Page = styled.div`
   color: ${colors.gray};
   font-size: 80%;
@@ -13,6 +15,11 @@ const Page = styled.div`
     bottom: 15%;
   }
   width: 100%;
+`;
+const BoldText = styled.div`
+  font-size: 200%;
+  text-align: center;
+  color: ${colors.yellow};
 `;
 const PageAction = styled.span`
   cursor: pointer;
@@ -39,17 +46,37 @@ export default class Reasons extends Component {
     const currentReason = reasons[currentIndex];
     return (
       <Container>
-        <Header>
-          <CountUp end={reasonCount} duration={2} />
-          {` `}Reasons <br />
-          Why Elena Is Amazing
-        </Header>
-        <Content>{currentReason && <Reason reason={currentReason} />}</Content>
-        <Page>
-          <PageAction onClick={this.goToPrev}>{`<`}</PageAction>
-          {` ${currentIndex + 1} / ${reasonCount} `}
-          <PageAction onClick={this.goToNext}>{`>`}</PageAction>
-        </Page>
+        <Countdown
+          date="2019-08-09"
+          renderer={({ days, hours, minutes, seconds, completed }) => {
+            if (completed)
+              return (
+                <Fragment>
+                  <Header>
+                    <CountUp end={reasonCount} duration={2} />
+                    {` `}Reasons <br />
+                    Why Elena Is Amazing
+                  </Header>
+                  <Content>{currentReason && <Reason reason={currentReason} />}</Content>
+                  <Page>
+                    <PageAction onClick={this.goToPrev}>{`<`}</PageAction>
+                    {` ${currentIndex + 1} / ${reasonCount} `}
+                    <PageAction onClick={this.goToNext}>{`>`}</PageAction>
+                  </Page>
+                </Fragment>
+              );
+            return (
+              <Fragment>
+                <Header>Coming Soon</Header>
+                <Content>
+                  <BoldText>
+                    {days} d {hours} h {minutes} m {seconds} s
+                  </BoldText>
+                </Content>
+              </Fragment>
+            );
+          }}
+        />
         <Footer>
           <StyledLink to="/">I'd like to tell Elena she's amazing too</StyledLink>
         </Footer>
