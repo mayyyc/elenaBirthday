@@ -3,6 +3,7 @@ import { Container, Header, Content, Footer, colors, StyledLink } from "./styles
 import styled from "styled-components";
 import CountUp from "react-countup";
 import Countdown from "react-countdown-now";
+import { Swipeable } from 'react-swipeable';
 import Reason from "./Reason";
 
 const Page = styled.div`
@@ -47,7 +48,7 @@ export default class Reasons extends Component {
     return (
       <Container>
         <Countdown
-          date={1565343000000}
+          date={1565341200000} //1565343000000
           renderer={({ days, hours, minutes, seconds, completed }) => {
             if (completed)
               return (
@@ -58,7 +59,12 @@ export default class Reasons extends Component {
                     Why Elena Is Amazing
                   </Header>
                   <Content className="content-item">
-                    {currentReason && <Reason reason={currentReason} />}
+                    <Swipeable
+                      onSwipedLeft={this.goToPrev}
+                      onSwipedRight={this.goToNext}
+                    >
+                      {currentReason && <Reason reason={currentReason} />}
+                    </Swipeable>
                   </Content>
                   <Page className="content-item">
                     <PageAction onClick={this.goToPrev}>{`<`}</PageAction>
