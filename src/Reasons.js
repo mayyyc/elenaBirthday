@@ -47,7 +47,7 @@ export default class Reasons extends Component {
     return (
       <Container>
         <Countdown
-          date={1565375400000}
+          date={1565343000000}
           renderer={({ days, hours, minutes, seconds, completed }) => {
             if (completed)
               return (
